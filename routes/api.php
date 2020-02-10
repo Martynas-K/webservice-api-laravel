@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +14,12 @@ Route::post('user', 'UserController@store');
 Route::put('user', 'UserController@store');
 Route::delete('user/{id}', 'UserController@destroy');
 
+Route::post('user/attach/{user_id}/{group_id}', 'UserController@addToGroup');
+Route::post('user/detach/{user_id}/{group_id}', 'UserController@removeFromGroup');
 
 Route::get('groups', 'GroupController@index');
 Route::get('group/{id}', 'GroupController@show');
 Route::post('group', 'GroupController@store');
 Route::put('group', 'GroupController@store');
 Route::delete('group/{id}', 'GroupController@destroy');
+
