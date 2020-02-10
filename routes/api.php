@@ -14,8 +14,8 @@ Route::post('user', 'UserController@store');
 Route::put('user', 'UserController@store');
 Route::delete('user/{id}', 'UserController@destroy');
 
-Route::post('user/attach/{user_id}/{group_id}', 'UserController@addToGroup');
-Route::post('user/detach/{user_id}/{group_id}', 'UserController@removeFromGroup');
+Route::post('user/attach/{user_id}/{group_id}', 'UserController@attachToGroup');
+Route::delete('user/detach/{user_id}/{group_id}', 'UserController@detachFromGroup');
 
 Route::get('groups', 'GroupController@index');
 Route::get('group/{id}', 'GroupController@show');

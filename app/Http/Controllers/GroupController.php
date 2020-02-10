@@ -48,8 +48,6 @@ class GroupController extends Controller
         return new GroupResource($group);
     }
 
-
-
     /**
      * Remove the specified resource from storage.
      *

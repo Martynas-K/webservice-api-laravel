@@ -14,7 +14,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(): UserResource
+    public function index()
     {
         $users = User::paginate(10);
         return UserResource::collection($users);
@@ -26,7 +26,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return UserResource
      */
-    public function store(Request $request): UserResource
+    public function store(Request $request)
     {
         $user = $request->isMethod('put') ? User::findOrFail($request->user_id) : new User;
         $user->id = $request->input('user_id');
@@ -69,7 +69,7 @@ class UserController extends Controller
      * @param $user_id
      * @param $group_id
      */
-    public function addToGroup($user_id, $group_id)
+    public function attachToGroup($user_id, $group_id): void
     {
         $user = User::find($user_id);
         $user->groups()->syncWithoutDetaching($group_id);
@@ -79,7 +79,7 @@ class UserController extends Controller
      * @param $user_id
      * @param $group_id
      */
-    public function removeFromGroup($user_id, $group_id)
+    public function detachFromGroup($user_id, $group_id): void
     {
         $user = User::find($user_id);
         $user->groups()->detach($group_id);
